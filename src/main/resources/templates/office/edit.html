@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Office</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Edit Office</h1>
+        <form th:action="@{/offices/{id}(id=${office.id})}" th:object="${office}" method="POST">
+            <div class="form-group">
+                <label>Code : </label>
+                <input type="text" name="code" th:field="*{code}" class="form-control" placeholder="Digite el code : "
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label>Name : </label>
+                <input type="text" name="name" th:field="*{name}" class="form-control" placeholder="Digite el name : "
+                    required>
+            </div>
+            <div class="form-group">
+                <label>Budget :</label>
+                <input type="number" name="budget" th:field="*{budget}" class="form-control" placeholder="budget:"
+                    step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label>Expenses:</label>
+                <input type="number" name="expenses" th:field="*{expenses}" class="form-control" placeholder="expenses:"
+                    step="0.01" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a class="btn btn-secondary" th:href="@{/offices}">Volver</a>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

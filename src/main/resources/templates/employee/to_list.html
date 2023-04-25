@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>List of employees</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1>List of employees</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Code</th>
+					<th>Nif</th>
+					<th>Name</th>
+					<th>First Surname</th>
+					<th>Second Surname</th>
+					<th>Office</th>
+					<th>Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${employees}">
+					<td th:text="${employee.code}"></td>
+					<td th:text="${employee.nif}"></td>
+					<td th:text="${employee.name}"></td>
+					<td th:text="${employee.surname1}"></td>
+					<td th:text="${employee.surname2}"></td>
+					<td th:text="${employee.office.id}"></td>
+					<td>
+						<a th:href="@{/employee/see/{id}(id=${employee.id})}" class="btn btn-info btn-sm">Ver</a>
+						<a th:href="@{/employee/edit/{id}(id=${employee.id})}" class="btn btn-warning btn-sm">Editar</a>
+						<a th:href="@{/employee/delete/{id}(id=${employee.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<a th:href="@{new/employee}" class="btn btn-success">New employee</a>
+			<a th:href="@{/offices}" class="btn btn-secondary">Back</a>
+		</div>
+	</div>
+</body>
+</html>
